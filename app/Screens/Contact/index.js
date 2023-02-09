@@ -6,28 +6,52 @@ import {
   Button,
   TouchableOpacity,
   Image,
+  Linking,
 } from 'react-native';
 import {commonStyles} from '../../common';
 import SubTitle from '../../Components/SubTitle';
+import {useTranslation} from 'react-i18next';
 
 export default function Contact({navigation}) {
+  const {t} = useTranslation();
+
   return (
     <View style={commonStyles.grayBg}>
-      <SubTitle navigation={navigation} title={'이용문의'} />
+      <SubTitle navigation={navigation} title={t('main_title5')} />
       <View style={commonStyles.container}>
         <View>
-          <Text style={styles.title}>어플리케이션 안내 및 알림 수신 방법</Text>
-          <Text style={styles.desc}>
-            * 본 어플리케이션은 생활원 공지알림 수신을 위한 PUSH 전용 앱으로
-            생활원 알림을 수신하고자 하는 모든 분이 이용가능합니다.
-          </Text>
+          <Text style={styles.title}>{t('sub_page5_t1')}</Text>
+          <Text style={styles.desc}>{t('sub_page5_t1_t1')}</Text>
+          <Text style={styles.desc}>{t('sub_page5_t1_t2')}</Text>
         </View>
         <View style={styles.btnWrap}>
-          <Text style={styles.title}>이용방법 문의</Text>
-          <TouchableOpacity style={styles.btnStyle}>
-            <Text style={styles.btnText}>원생</Text>
+          <Text style={styles.title}>{t('sub_page4_t1')}</Text>
+          <TouchableOpacity
+            style={styles.btnStyle}
+            onPress={() =>
+              Linking.openURL(
+                'https://dorm.pusan.ac.kr/dorm/bbs/list03/20000603',
+              )
+            }>
+            <Text style={styles.btnText}>{t('sub_page4_b1')}</Text>
           </TouchableOpacity>
-          <Text style={styles.desc}>ㅇㅇㅇ</Text>
+          <Text style={styles.desc}>{t('sub_page4_b1_t')}</Text>
+          <TouchableOpacity
+            style={styles.btnStyle}
+            onPress={() =>
+              Linking.openURL(
+                'https://dorm.pusan.ac.kr/dorm/bbs/list03/20000602',
+              )
+            }>
+            <Text style={styles.btnText}>{t('sub_page4_b2')}</Text>
+          </TouchableOpacity>
+          <Text style={styles.desc}>{t('sub_page4_b2_t')}</Text>
+          <TouchableOpacity
+            style={styles.btnStyle}
+            onPress={() => Linking.openURL('tel:010-1234-1234')}>
+            <Text style={styles.btnText}>{t('sub_page4_b3')}</Text>
+          </TouchableOpacity>
+          <Text style={styles.desc}>{t('sub_page4_b3_t')}</Text>
         </View>
       </View>
     </View>

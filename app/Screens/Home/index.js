@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,9 +7,15 @@ import {
   Image,
   ImageBackground,
 } from 'react-native';
+import {useTranslation} from 'react-i18next';
+import {langChange} from '../../store';
 import {commonStyles} from '../../common';
+import {connect} from 'react-redux';
 
-export default function Home({navigation}) {
+function Home({navigation}) {
+  const {t} = useTranslation();
+  const [nowLang, setNowLang] = useState('KO');
+
   return (
     <View style={styles.wrapper}>
       <ImageBackground
@@ -18,11 +24,43 @@ export default function Home({navigation}) {
         style={styles.bg}>
         <View style={commonStyles.container}>
           <View style={styles.btnWrap}>
-            <TouchableOpacity style={[styles.btnStyle, styles.btnActive]}>
-              <Text style={[styles.btnText, styles.btnTextActive]}>한국어</Text>
+            <TouchableOpacity
+              style={
+                nowLang === 'KO'
+                  ? [styles.btnStyle, styles.btnActive]
+                  : [styles.btnStyle]
+              }
+              onPress={() => {
+                setNowLang('KO');
+                langChange('KO');
+              }}>
+              <Text
+                style={
+                  nowLang === 'KO'
+                    ? [styles.btnText, styles.btnTextActive]
+                    : [styles.btnText]
+                }>
+                한국어
+              </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.btnStyle}>
-              <Text style={styles.btnText}>ENG</Text>
+            <TouchableOpacity
+              style={
+                nowLang === 'EN'
+                  ? [styles.btnStyle, styles.btnActive]
+                  : [styles.btnStyle]
+              }
+              onPress={() => {
+                setNowLang('EN');
+                langChange('EN');
+              }}>
+              <Text
+                style={
+                  nowLang === 'EN'
+                    ? [styles.btnText, styles.btnTextActive]
+                    : [styles.btnText]
+                }>
+                ENG
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={styles.logoWrap}>
@@ -42,7 +80,7 @@ export default function Home({navigation}) {
                   source={require('../../images/i1.png')}
                   resizeMode={'contain'}
                 />
-                <Text style={styles.menuText}>알림확인</Text>
+                <Text style={styles.menuText}>{t('main_title1')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.menuBtn}
@@ -52,7 +90,7 @@ export default function Home({navigation}) {
                   source={require('../../images/i2.png')}
                   resizeMode={'contain'}
                 />
-                <Text style={styles.menuText}>식단안내</Text>
+                <Text style={styles.menuText}>{t('main_title2')}</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.menuGrid3}>
@@ -64,7 +102,7 @@ export default function Home({navigation}) {
                   source={require('../../images/i3.png')}
                   resizeMode={'contain'}
                 />
-                <Text style={styles.menuText}>공지사항</Text>
+                <Text style={styles.menuText}>{t('main_title3')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.menuBtn}
@@ -74,7 +112,7 @@ export default function Home({navigation}) {
                   source={require('../../images/i4.png')}
                   resizeMode={'contain'}
                 />
-                <Text style={styles.menuText}>원생수칙</Text>
+                <Text style={styles.menuText}>{t('main_title4')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.menuBtn}
@@ -84,7 +122,7 @@ export default function Home({navigation}) {
                   source={require('../../images/i5.png')}
                   resizeMode={'contain'}
                 />
-                <Text style={styles.menuText}>이용문의</Text>
+                <Text style={styles.menuText}>{t('main_title5')}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -93,6 +131,12 @@ export default function Home({navigation}) {
     </View>
   );
 }
+
+function mapDispatchToProps(dispatch) {
+  return {langChange: state => dispatch(langChange(state))};
+}
+
+export default connect(null, mapDispatchToProps)(Home);
 
 const styles = StyleSheet.create({
   wrapper: {flex: 1},

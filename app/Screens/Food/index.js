@@ -1,11 +1,16 @@
 import React from 'react';
-import {Text, View, Button} from 'react-native';
+import {Text, View} from 'react-native';
+import {commonStyles} from '../../common';
+import SubTitle from '../../Components/SubTitle';
+import WebviewContainer from '../../Components/WebviewContainer';
 
 export default function Food({navigation}) {
   return (
-    <View>
-      <Text>Food</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+    <View style={commonStyles.grayBg}>
+      <SubTitle navigation={navigation} title={'식단안내'} />
+      <WebviewContainer
+        url={'https://dorm.pusan.ac.kr/dorm/function/mealPlan/2000040301'}
+      />
     </View>
   );
 }

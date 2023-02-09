@@ -8,22 +8,12 @@ import {
   Image,
 } from 'react-native';
 import {commonStyles} from '../../common';
+import SubTitle from '../../Components/SubTitle';
 
 export default function Contact({navigation}) {
   return (
     <View style={commonStyles.grayBg}>
-      <View style={commonStyles.subTitWrap}>
-        <TouchableOpacity
-          style={commonStyles.backLink}
-          onPress={() => navigation.navigate('Home')}>
-          <Image
-            style={commonStyles.backImg}
-            src="https://cdn-icons-png.flaticon.com/512/109/109618.png"
-            resizeMode={'contain'}
-          />
-        </TouchableOpacity>
-        <Text style={commonStyles.subTitText}>이용문의</Text>
-      </View>
+      <SubTitle navigation={navigation} title={'이용문의'} />
       <View style={commonStyles.container}>
         <View>
           <Text style={styles.title}>어플리케이션 안내 및 알림 수신 방법</Text>
@@ -39,7 +29,6 @@ export default function Contact({navigation}) {
           </TouchableOpacity>
           <Text style={styles.desc}>ㅇㅇㅇ</Text>
         </View>
-        {/* <Button title="Go to Home" onPress={() => navigation.navigate('Home')} /> */}
       </View>
     </View>
   );

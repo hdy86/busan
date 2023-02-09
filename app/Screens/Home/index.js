@@ -10,9 +10,6 @@ import {
 import {commonStyles} from '../../common';
 
 export default function Home({navigation}) {
-  useEffect(() => {
-    // console.log(navigation);
-  }, []);
   return (
     <View style={styles.wrapper}>
       <ImageBackground

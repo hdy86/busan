@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "281628228647",
+    "project_id": "busan-e4cb1",
+    "storage_bucket": "busan-e4cb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281628228647:android:e33d957274f9625ddba202",
+        "android_client_info": {
+          "package_name": "com.busan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281628228647-6ebkafph12fbqh6pqkfcravve4uu2jjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaB8r3hyAY5m2MgDNUre2Mn7N44Bh72bA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "281628228647-6ebkafph12fbqh6pqkfcravve4uu2jjk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

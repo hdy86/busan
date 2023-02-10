@@ -7,13 +7,14 @@ import {
   Image,
   ImageBackground,
 } from 'react-native';
+import {useDispatch} from 'react-redux';
 import {useTranslation} from 'react-i18next';
-import {langChange} from '../../store';
+import {langKor, langEng} from '../../store';
 import {commonStyles} from '../../common';
-import {connect} from 'react-redux';
 
-function Home({navigation}) {
+export default function Home({navigation}) {
   const {t} = useTranslation();
+  const dispatch = useDispatch();
   const [nowLang, setNowLang] = useState('KO');
 
   return (
@@ -31,8 +32,8 @@ function Home({navigation}) {
                   : [styles.btnStyle]
               }
               onPress={() => {
+                dispatch(langKor());
                 setNowLang('KO');
-                langChange('KO');
               }}>
               <Text
                 style={
@@ -50,8 +51,8 @@ function Home({navigation}) {
                   : [styles.btnStyle]
               }
               onPress={() => {
+                dispatch(langEng());
                 setNowLang('EN');
-                langChange('EN');
               }}>
               <Text
                 style={
@@ -131,12 +132,6 @@ function Home({navigation}) {
     </View>
   );
 }
-
-function mapDispatchToProps(dispatch) {
-  return {langChange: state => dispatch(langChange(state))};
-}
-
-export default connect(null, mapDispatchToProps)(Home);
 
 const styles = StyleSheet.create({
   wrapper: {flex: 1},
